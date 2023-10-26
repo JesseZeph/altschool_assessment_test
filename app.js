@@ -17,12 +17,12 @@ const app = express();
 
 // use express router
 
-app.get('/', require('./routes/index'));
-app.get('/dashboard', require('./routes/index'));
-app.get('/register', require('./routes/index'));
-app.get('/alltask', require('./routes/index'));
-app.get('/completedtask', require('./routes/index'));
-app.get('/login', require('./routes/index'))
+app.get('/', require('./routes'));
+app.get('/dashboard', require('./routes'));
+app.get('/register', require('./routes'));
+app.get('/alltask', require('./routes'));
+app.get('/completedtask', require('./routes'));
+app.get('/login', require('./routes'))
 
 
 //set up the view engine    
