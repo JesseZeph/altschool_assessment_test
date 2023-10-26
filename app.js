@@ -3,6 +3,7 @@ const PORT = 3000;
 const path = require('path');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const logger = require('./helpers/logger')
 
 
 
@@ -45,6 +46,7 @@ app.use(express.static('public'));
 //register user
 
 app.post('/register', async (req, res) => {
+    logger.info('Registration page')
     const { firstname, lastname, phone, email, password } = req.body;
 
     try {
@@ -71,6 +73,7 @@ app.post('/register', async (req, res) => {
   
 
 app.get('/dashboard', (req, res) => {
+    logger.info('Dashboard')
     const userName = req.user ? req.user.name : 'Guest'; 
     res.render('dashboard', { userName });
   });
@@ -94,6 +97,8 @@ app.post('/addtask', function (req, res) {
 });
 
 app.get('/complete-task', function (req, res) {
+    logger.info('Task completed page')
+
     let id = req.query.id;
     Dashboard.findByIdAndUpdate(id, { completed: true })
         .then(newTask => {
@@ -107,6 +112,7 @@ app.get('/complete-task', function (req, res) {
 });
 
 app.get('/delete-task', function (req, res) {
+    logger.info('Delete task')
     let id = req.query.id;
     Dashboard.findByIdAndDelete(id)
         .then(newTask => {
@@ -123,6 +129,8 @@ app.get('/delete-task', function (req, res) {
 
 
 app.post('/login', async (req, res) => {
+    logger.info('Login page')
+
     const { email, password } = req.body;
 
     try {
@@ -148,6 +156,8 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
+    logger.info('logout')
+
     req.session.destroy(err => {
         if (err) {
             console.error('Error destroying session:', err);
