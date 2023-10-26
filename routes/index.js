@@ -5,7 +5,7 @@ const dashboardController = require('../controller/dashhboardController');
 const registerController = require('../controller/registerController');
 const loginController = require('../controller/loginController'); 
 const allTasksController = require('../controller/allTasksController');
-const completedtaskController = require('../controller/completedtaskController');
+const completedTaskController = require('../controller/completedTaskController')
 
 
 
@@ -16,7 +16,7 @@ router.get('/dashboard', dashboardController.dashboard);
 router.get('/register', registerController.register);
 router.get('/login', loginController.login);
 router.get('/alltask', allTasksController.alltask);
-router.get('/completedtask', completedtaskController.completedtask);
+router.get('/completedtask', completedTaskController.completedtask);
 
 
 module.exports = router;
